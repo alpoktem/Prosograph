@@ -5,7 +5,7 @@ In the **dataset** directory you can find two sample data from TED talks.
 
 All configurations are set in **config.py**.
 
-#Keyboard shortcuts:
+# Keyboard shortcuts:
 * N - skip ahead 20 words 
 * B - skip back 20 words
 * S - save current view as image to disk
