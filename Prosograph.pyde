@@ -1,7 +1,7 @@
 import cPickle
 import codecs
 import config
-import dataconfig_penn as dataconfig
+import dataconfig_ted as dataconfig
 import random
 
 randomColorVals = [0, 20, 50, 75, 100, 125, 150, 175, 200, 225, 250]
