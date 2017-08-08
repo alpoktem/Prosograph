@@ -1,7 +1,7 @@
 import cPickle
 import codecs
 import config
-import dataconfig_ted as dataconfig
+import dataconfig_penn40 as dataconfig
 import random
 
 randomColorVals = [0, 20, 50, 75, 100, 125, 150, 175, 200, 225, 250]
@@ -38,7 +38,7 @@ def setup():
     
     initializeColors()
     initializeDrawOrNot()
-    initializeMinMaxOfFeatures()
+    initializeMinMaxOfFeatures()  #ACHTUNG
     
 def initializeDrawOrNot():
     #initialize drawOrNot arrays for features (this is written for later)
@@ -51,7 +51,9 @@ def initializeDrawOrNot():
     global percentage_features_drawOrNot_dict
     percentage_features_drawOrNot_dict = createDrawOrNotDict(dataconfig.percentage_feature_keys)
     
+#TODO: this function doesn't work for sampled data
 def initializeMinMaxOfFeatures():
+    global minFeatureVal
     minFeatureVal = 0
     global maxFeatureVal
     maxFeatureVal = 0
@@ -62,13 +64,14 @@ def initializeMinMaxOfFeatures():
     for featureName in dataconfig.line_feature_keys:
         minFeatureVal = min(minFeatureVal, min(dataset[featureName]))
         maxFeatureVal = max(maxFeatureVal, max(dataset[featureName]))
-    for featureName in dataconfig.curve_feature_keys:
-        minFeatureVal = min(minFeatureVal, min(dataset[featureName]))
-        maxFeatureVal = max(maxFeatureVal, max(dataset[featureName]))
-        
+    #for featureName in dataconfig.curve_feature_keys:
+    #    minFeatureVal = min(minFeatureVal, min(dataset[featureName]))
+    #    maxFeatureVal = max(maxFeatureVal, max(dataset[featureName]))
+    
     maxFeatureVal = max(abs(minFeatureVal), abs(maxFeatureVal))
     
 def fitFeatureValueToBoxRange(value, boxSize):
+    global maxFeatureVal
     return int(value/maxFeatureVal * boxSize)
     
 def initializeColors():
@@ -184,23 +187,23 @@ def drawSample(sample, start_drawing_from, no_of_words, draw_from_Y=0):
         #draw percentage features 
         for percentage_feature_name in dataconfig.percentage_feature_keys:
             if percentage_features_drawOrNot_dict[percentage_feature_name]:
-                mark_at_percentage = sample[percentage_feature_name][index]
-                if mark_at_percentage >= 0 and mark_at_percentage <= 100: 
-                    markX = wordBoxStartX + (wordBoxEndX - wordBoxStartX) * mark_at_percentage / 100
-                    markY = brushY #cuidado
-                    
-                    print(mark_at_percentage)
-                    print("%i, %i, %i"%(wordBoxStartX, markX, wordBoxEndX))
-                    
-                    stroke(percentage_features_colors_dict[percentage_feature_name][0],
-                        percentage_features_colors_dict[percentage_feature_name][1],
-                        percentage_features_colors_dict[percentage_feature_name][2])
-                    fill(percentage_features_colors_dict[percentage_feature_name][0],
-                        percentage_features_colors_dict[percentage_feature_name][1],
-                        percentage_features_colors_dict[percentage_feature_name][2])
-                    
-                    triangleSimple(markX, markY, config.PERCENTAGE_FEATURE_MARK_SIZE, config.PERCENTAGE_FEATURE_MARK_SIZE)
-        
+                for mark_at_percentage in sample[percentage_feature_name][index]:
+                    if mark_at_percentage >= 0 and mark_at_percentage <= 100: 
+                        markX = wordBoxStartX + (wordBoxEndX - wordBoxStartX) * mark_at_percentage / 100
+                        markY = brushY #cuidado
+                        
+                        print(mark_at_percentage)
+                        print("%i, %i, %i"%(wordBoxStartX, markX, wordBoxEndX))
+                        
+                        stroke(percentage_features_colors_dict[percentage_feature_name][0],
+                            percentage_features_colors_dict[percentage_feature_name][1],
+                            percentage_features_colors_dict[percentage_feature_name][2])
+                        fill(percentage_features_colors_dict[percentage_feature_name][0],
+                            percentage_features_colors_dict[percentage_feature_name][1],
+                            percentage_features_colors_dict[percentage_feature_name][2])
+                        
+                        triangleSimple(markX, markY, config.PERCENTAGE_FEATURE_MARK_SIZE, config.PERCENTAGE_FEATURE_MARK_SIZE)
+            
         
         #draw label feature just below word
         if dataconfig.label_feature_key and sample[dataconfig.label_feature_key][index]:
@@ -249,7 +252,7 @@ def drawSample(sample, start_drawing_from, no_of_words, draw_from_Y=0):
                 for bin_no in range(config.NO_OF_BINS_IN_CURVE_FEATURES):
                     startBinX = wordBoxStartX + curr_bin_offset
                     endBinX = wordBoxStartX + curr_bin_offset + bin_length_in_x
-                    value = sample[curve_feature_name][i][bin_no]
+                    value = sample[curve_feature_name][index][bin_no]
                     rangedValue = fitFeatureValueToBoxRange(value, wordBoundingBoxHeight)
                     line(startBinX, brushY - rangedValue, endBinX, brushY - rangedValue)
                     curr_bin_offset += bin_length_in_x
