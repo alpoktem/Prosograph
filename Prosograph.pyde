@@ -1,7 +1,7 @@
 import cPickle
 import codecs
 import config
-import dataconfig_penn40 as dataconfig
+import dataconfig_ted as dataconfig
 import random
 
 randomColorVals = [0, 20, 50, 75, 100, 125, 150, 175, 200, 225, 250]
@@ -50,6 +50,8 @@ def initializeDrawOrNot():
     curve_features_drawOrNot_dict = createDrawOrNotDict(dataconfig.curve_feature_keys)
     global percentage_features_drawOrNot_dict
     percentage_features_drawOrNot_dict = createDrawOrNotDict(dataconfig.percentage_feature_keys)
+    global binary_feature_drawOrNot_dict
+    binary_feature_drawOrNot_dict = createDrawOrNotDict([dataconfig.binary_feature_key])
     
 #TODO: this function doesn't work for sampled data
 def initializeMinMaxOfFeatures():
@@ -85,11 +87,18 @@ def initializeColors():
     curve_features_colors_dict = createColorDict(dataconfig.curve_feature_keys)
     global percentage_features_colors_dict
     percentage_features_colors_dict = createColorDict(dataconfig.percentage_feature_keys)
+    if dataconfig.binary_feature_key :
+        global binary_feature_colors_dict
+        binary_feature_colors_dict = { dataconfig.binary_feature_key : [config.WORD_BOX_LIT_COLOR[0], 
+                            config.WORD_BOX_LIT_COLOR[1],
+                            config.WORD_BOX_LIT_COLOR[2],
+                            config.WORD_BOX_LIT_COLOR[3]]}
 
 def createColorDict(featureList):
     dict = { feature : [randomColorVals[random.randrange(0, numRandomColorVals)], 
                         randomColorVals[random.randrange(0, numRandomColorVals)],
-                        randomColorVals[random.randrange(0, numRandomColorVals)]] for feature in featureList }
+                        randomColorVals[random.randrange(0, numRandomColorVals)],
+                        255] for feature in featureList }
     return dict
 
 def createDrawOrNotDict(featureList):
@@ -108,6 +117,7 @@ def triangleSimple(x, y, w, h):
     triangle(x,y, x+w/2, y-h, x+w, y)
 
 def drawSample(sample, start_drawing_from, no_of_words, draw_from_Y=0):
+    print(sample)
     strokeWeight(0.5)
     brushX = 0
     brushY = draw_from_Y
@@ -192,8 +202,8 @@ def drawSample(sample, start_drawing_from, no_of_words, draw_from_Y=0):
                         markX = wordBoxStartX + (wordBoxEndX - wordBoxStartX) * mark_at_percentage / 100
                         markY = brushY #cuidado
                         
-                        print(mark_at_percentage)
-                        print("%i, %i, %i"%(wordBoxStartX, markX, wordBoxEndX))
+                        #print(mark_at_percentage)
+                        #print("%i, %i, %i"%(wordBoxStartX, markX, wordBoxEndX))
                         
                         stroke(percentage_features_colors_dict[percentage_feature_name][0],
                             percentage_features_colors_dict[percentage_feature_name][1],
@@ -286,26 +296,17 @@ def drawLegend():
     brushX = drawFeatureLegend(dataconfig.line_feature_keys, line_features_drawOrNot_dict, line_features_colors_dict, brushX, brushY, "line")
     brushX = drawFeatureLegend(dataconfig.curve_feature_keys, curve_features_drawOrNot_dict, curve_features_colors_dict, brushX, brushY, "line")
     brushX = drawFeatureLegend(dataconfig.point_feature_keys, point_features_drawOrNot_dict, point_features_colors_dict, brushX, brushY, "point")
+    brushX = drawFeatureLegend(dataconfig.percentage_feature_keys, percentage_features_drawOrNot_dict, percentage_features_colors_dict, brushX, brushY, "percentage")
+    if dataconfig.binary_feature_key:
+        brushX = drawFeatureLegend([dataconfig.binary_feature_key], binary_feature_drawOrNot_dict, binary_feature_colors_dict, brushX, brushY, "binary")
 
 def drawFeatureLegend(feature_keys, drawOrNot_dict, colors_dict, brushX, brushY, markType):
     if feature_keys:
         ellipseMode(CENTER)
         for feature_name in feature_keys:
+            #print(feature_name)
             if drawOrNot_dict[feature_name]:
-                if markType == "point":
-                    fill(colors_dict[feature_name][0],
-                        colors_dict[feature_name][1],
-                        colors_dict[feature_name][2])
-                    strokeWeight(1)
-                    stroke(colors_dict[feature_name][0],
-                        colors_dict[feature_name][1],
-                        colors_dict[feature_name][2])
-                    ellipse(brushX, brushY, config.LEGEND_BOX_SIZE, config.LEGEND_BOX_SIZE)
-                    brushX += config.LEGEND_BOX_SIZE/2
-                    fill(255)
-                    text(" : " + feature_name, brushX, brushY + config.LEGEND_TEXT_SIZE/2)
-                    brushX += textWidth(" : " + feature_name) + config.LEGEND_TEXT_SIZE * 1.3
-                elif markType == "line":
+                if markType == "line":
                     stroke(colors_dict[feature_name][0],
                         colors_dict[feature_name][1],
                         colors_dict[feature_name][2])
@@ -316,7 +317,26 @@ def drawFeatureLegend(feature_keys, drawOrNot_dict, colors_dict, brushX, brushY,
                     text(" : " + feature_name, brushX, brushY + config.LEGEND_TEXT_SIZE/2)
                     brushX += textWidth(" : " + feature_name) + config.LEGEND_TEXT_SIZE * 1.3
                 else:
-                    "You shouldn't be here"
+                    #print(colors_dict)
+                    #print(feature_name)
+                    fill(colors_dict[feature_name][0],
+                        colors_dict[feature_name][1],
+                        colors_dict[feature_name][2])
+                    strokeWeight(1)
+                    stroke(colors_dict[feature_name][0],
+                        colors_dict[feature_name][1],
+                        colors_dict[feature_name][2])
+                    if markType == "point":
+                        ellipse(brushX, brushY, config.LEGEND_BOX_SIZE, config.LEGEND_BOX_SIZE)
+                    elif markType == "percentage":
+                        triangleSimple(brushX - config.LEGEND_BOX_SIZE/2, brushY + config.LEGEND_BOX_SIZE/2, config.LEGEND_BOX_SIZE, config.LEGEND_BOX_SIZE)
+                    elif markType == "binary":
+                        rectMode(CENTER)
+                        rect(brushX, brushY, config.LEGEND_BOX_SIZE *1.4, config.LEGEND_BOX_SIZE)
+                    brushX += config.LEGEND_BOX_SIZE/2
+                    fill(255)
+                    text(" : " + feature_name, brushX, brushY + config.LEGEND_TEXT_SIZE/2)
+                    brushX += textWidth(" : " + feature_name) + config.LEGEND_TEXT_SIZE * 1.3
                 
         brushX += config.LEGEND_TEXT_SIZE * 2
     return brushX

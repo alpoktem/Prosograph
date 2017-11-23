@@ -1,9 +1,13 @@
 # Prosograph
 A Visualizer for prosodically annotated speech corpora written in Processing.
 
-In the **dataset** directory you can find two sample data from TED talks. 
+In the `dataset` directory you can find sample data. Data is encoded as python dictionaries and stored as pickle files.  
 
-All configurations are set in **config.py**.
+Visual configurations are set in `config.py`.
+
+Data specific configurations are set in  `dataconfig_xxx.py` and imported in the main script `Prosograph.pyde`. Which data file to read is specified in data configuration file in the `DATASET` variable. 
+
+More information on the tool can be found in [our publication](http://hdl.handle.net/10230/32719).
 
 # Keyboard shortcuts:
 * N - skip ahead 20 words 
@@ -13,4 +17,12 @@ All configurations are set in **config.py**.
 * X - Exit
 
 # Citing
-This software will be published in Interspeech 2017.
+This software is published in Interspeech 2017.
+
+	@inproceedings{prosograph,
+		author = {Alp Oktem and Mireia Farrus and Leo Wanner},
+		title = {Prosograph: a tool for prosody visualisation of large speech corpora},
+		booktitle = {Proceedings of the 18th Annual Conference of the International Speech Communication Association (INTERSPEECH)},
+		year = {2017},
+		address = {Stockholm, Sweden}
+	}
