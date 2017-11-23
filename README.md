@@ -1,13 +1,11 @@
 # Prosograph
-A Visualizer for prosodically annotated speech corpora written in Processing. Prosograph lets visualize a prosodically annotated speech corpus on a large scale. An example of a view:
+A Visualizer for prosodically annotated speech corpora written in Processing. Prosograph lets visualize a prosodically annotated speech corpus on a large scale. An example of a view can be seen in `saved-frames` folder. 
 
-[[https://github.com/alpoktem/Prosograph/blob/master/saved-frames/batchfrom-0.tif]]
-
-In the `dataset` directory you can find sample data. Data is encoded as python dictionaries and stored as pickle files.  
+In the `dataset` directory sample data is provided. Data is encoded as python dictionaries and stored as pickle files.  
 
 Visual configurations are set in `config.py`.
 
-Data specific configurations are set in  `dataconfig_xxx.py` and imported in the main script `Prosograph.pyde`. Which data file to read is specified in data configuration file in the `DATASET` variable. 
+Data specific configurations are set in  `dataconfig_xxx.py` and imported in the main script `Prosograph.pyde`. Which data file to read is specified in the `DATASET` variable of the data configuration file. 
 
 More information on the tool can be found in [our publication](http://hdl.handle.net/10230/32719).
 
@@ -19,7 +17,7 @@ More information on the tool can be found in [our publication](http://hdl.handle
 * X - Exit
 
 # Citing
-This software is published in Interspeech 2017.
+This software is presented in Interspeech 2017.
 
 	@inproceedings{prosograph,
 		author = {Alp Oktem and Mireia Farrus and Leo Wanner},
