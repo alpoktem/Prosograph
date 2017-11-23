@@ -1,5 +1,7 @@
 # Prosograph
-A Visualizer for prosodically annotated speech corpora written in Processing.
+A Visualizer for prosodically annotated speech corpora written in Processing. Prosograph lets visualize a prosodically annotated speech corpus on a large scale. An example of a view:
+
+[[https://github.com/alpoktem/Prosograph/blob/master/saved-frames/batchfrom-0.tif]]
 
 In the `dataset` directory you can find sample data. Data is encoded as python dictionaries and stored as pickle files.  
 
