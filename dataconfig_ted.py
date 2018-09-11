@@ -14,8 +14,8 @@ label_feature_key = ''
 
 draw_feature_line = True
 point_feature_keys = []
-point_feature_keys = ['range.i0']
-line_feature_keys = ['mean.i0']
+point_feature_keys = ['range.f0']
+line_feature_keys = ['mean.f0']
 #line_feature_keys = ['mean.i0']
 curve_feature_keys = []
 percentage_feature_keys = []
