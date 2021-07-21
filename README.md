@@ -34,13 +34,13 @@ Visual configurations are set in `config.py`.
 
 Prosograph is operated with the following hotkeys:
 
-* N - Skip ahead samples
-* B - Skip back samples
-* P - Play/pause
-* R - Refresh view
-* S - Save current view as image to disk
-* C - Change colour palette
-* X,Q - Exit
+* `N` - Skip ahead samples
+* `B` - Skip back samples
+* `P` - Play/pause
+* `R` - Refresh view
+* `S` - Save current view as image to disk
+* `C` - Change colour palette
+* `X`,`Q` - Exit
 
 For playback, audio file needs to be in the same directory and with same name as the proscript file. To play, a section needs to be selected first using left-clicking on wordboxes. 
 
