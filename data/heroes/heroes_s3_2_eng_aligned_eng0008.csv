@@ -1,0 +1,3 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+nathan|Robert Malden|heroes_s3_2_eng_aligned.segment8.word1|0.0|0.46|0.46|0.04|0.0|NA|||136.0|69.0|-7.7597|1.0288
+petrelli|Robert Malden|heroes_s3_2_eng_aligned.segment8.word2|0.46|0.92|0.46|0.0|0.69|NA||.|432.0|59.0|12.2494|-1.6817

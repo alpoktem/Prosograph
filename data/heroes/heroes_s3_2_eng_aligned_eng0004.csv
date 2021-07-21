@@ -1,0 +1,5 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+put|Peter|heroes_s3_2_eng_aligned.segment4.word1|0.0|0.09|0.09|0.1|0.0|NA|||0.0|71.0|0.0|2.2174
+him|Peter|heroes_s3_2_eng_aligned.segment4.word2|0.09|0.24|0.15|0.0|0.0|NA|||0.0|69.0|0.0|1.7228
+someplace|Peter|heroes_s3_2_eng_aligned.segment4.word3|0.24|0.71|0.47|0.0|0.0|NA|||0.0|65.0|0.0|0.6889
+safe|Peter|heroes_s3_2_eng_aligned.segment4.word4|0.71|1.05|0.34|0.0|0.11|NA||.|0.0|66.0|0.0|0.9532

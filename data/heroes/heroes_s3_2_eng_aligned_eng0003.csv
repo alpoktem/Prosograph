@@ -1,0 +1,7 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+what|Angela|heroes_s3_2_eng_aligned.segment3.word1|0.0|0.09|0.09|0.69|0.0|NA|||0.0|69.0|0.0|1.6062
+have|Angela|heroes_s3_2_eng_aligned.segment3.word2|0.09|0.3|0.21|0.0|0.0|NA|||0.0|69.0|0.0|1.6062
+you|Angela|heroes_s3_2_eng_aligned.segment3.word3|0.3|0.43|0.13|0.0|0.0|NA|||0.0|67.0|0.0|1.097
+done|Angela|heroes_s3_2_eng_aligned.segment3.word4|0.43|0.62|0.19|0.0|0.0|NA|||45.0|67.0|-27.7373|1.097
+with|Angela|heroes_s3_2_eng_aligned.segment3.word5|0.62|0.8|0.18|0.0|0.0|NA|||39.0|65.0|-30.2148|0.5724
+peter|Angela|heroes_s3_2_eng_aligned.segment3.word6|0.8|1.62|0.82|0.0|0.1|NA||?|54.0|71.0|-24.5809|2.1009

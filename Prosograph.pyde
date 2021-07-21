@@ -1,4 +1,3 @@
-import cPickle
 import csv
 from collections import defaultdict
 import codecs
@@ -7,14 +6,15 @@ import proscript
 import json
 import os
 import random
-import dataconfig_newdata as dataconfig
 from proscript import Proscript, Segment, Word
+import dataconfig_ted as dataconfig   #Specify here which dataconfig you want to use
+
 add_library('minim')
 
 randomColorVals = [0, 20, 50, 75, 100, 125, 150, 175, 200, 225, 250]
 numRandomColorVals = 11
 
-def get_file_list(data_source, extension='.0.csv'):
+def get_file_list(data_source, extension='.csv'):
     if not os.path.isdir(data_source):
         files = [data_source]
     else:
@@ -28,7 +28,7 @@ def load_dataset():
     global dataset_id
     global no_of_samples
     if dataset_id == '-1':
-        dataset = get_file_list(dataconfig.DATASET, '.csv')
+        dataset = get_file_list(dataconfig.DATASET)
         no_of_samples = len(dataset)
         print("Displaying dataset. (Size: " + str(no_of_samples) + ")")
     elif dataset_id in dataconfig.dataset_tags.keys():
@@ -114,11 +114,14 @@ def initializeColors():
                             config.WORD_BOX_LIT_COLOR[2],
                             config.WORD_BOX_LIT_COLOR[3]]}
 
+def getRandomColor():
+    return [randomColorVals[random.randrange(0, numRandomColorVals)], 
+            randomColorVals[random.randrange(0, numRandomColorVals)],
+            randomColorVals[random.randrange(0, numRandomColorVals)],
+            255]
+
 def createColorDict(featureList):
-    dict = { feature : [randomColorVals[random.randrange(0, numRandomColorVals)], 
-                        randomColorVals[random.randrange(0, numRandomColorVals)],
-                        randomColorVals[random.randrange(0, numRandomColorVals)],
-                        255] for feature in featureList }
+    dict = { feature : getRandomColor() if feature not in dataconfig.color_dict else dataconfig.color_dict[feature] for feature in featureList if feature }
     return dict
 
 def createDrawOrNotDict(featureList):
@@ -405,7 +408,7 @@ def drawSampleset(start_drawing_from_sample, start_drawing_from_word):
     
     for sample_no in range(start_drawing_from_sample, no_of_samples):
         sample_file = dataset[sample_no]
-        
+        print('reading %s'%sample_file)
         sample_proscript = Proscript()
         sample_proscript.from_file(sample_file, search_audio=True)
         #print('audio file', sample_proscript.audio_file)
@@ -413,7 +416,6 @@ def drawSampleset(start_drawing_from_sample, start_drawing_from_word):
         
         global no_of_words
         no_of_words = sample_proscript.get_no_of_words()
-        
         Y_offset = drawSample(sample_proscript, start_drawing_from_word, no_of_words, Y_offset)
         if Y_offset == -1:
             break
@@ -456,9 +458,10 @@ def mousePressed():
     if not select_range == -1:
         print("Selected %s: %s - %s"%(drawn_words[select_range[0]].segment_ref.proscript_ref.id, drawn_words[select_range[0]].word, drawn_words[select_range[1]].word))
         audio_file = drawn_words[select_range[0]].segment_ref.proscript_ref.audio_file
-        #print("Audio: %s"%audio_file)
-        groove = minim.loadFile(audio_file)
-        groove.setLoopPoints(int(drawn_words[select_range[0]].start_time * 1000), int(drawn_words[select_range[1]].end_time * 1000))
+        print("Audio: %s"%audio_file)
+        if audio_file:
+            groove = minim.loadFile(audio_file)
+            groove.setLoopPoints(int(drawn_words[select_range[0]].start_time * 1000), int(drawn_words[select_range[1]].end_time * 1000))
     else:
         print("Selection empty")
         groove = None

@@ -1,21 +1,26 @@
-#data file paths
-DATASET="dataset/0001.pcl"
-DATA_IS_SAMPLED=False
+DATASET = "/Users/alp/Documents/phdCloud/playground/Prosograph/data/ted"  #Change this to the exact location of the dataset
+dataset_tags = {}
 
-#feature names in the dataset
-#all_feature_names = ['pause', 'word', 'bins.f0', 'mean.f0', 'jump.f0', 'med.f0', 'mean.i0', 'bins.i0', 'sd.f0', 'slope.f0', 'punctuation']
-word_key = 'word'    #integer value which has the corresponding text in the vocabulary
-punctuation_before_key = 'punctuation'
-pause_before_key = 'pause'       #this corresponds to silence before the word. a space will be put before
+word_key = 'word'  
+punctuation_before_key = 'punctuation_before'
+draw_punctuation = True
+pause_before_key = 'pause_before'
+draw_pause_boxes = True
 word_duration_key = '' 
+draw_word_duration = False
 binary_feature_key = ''
-#word_duration_key = 'duration'      #if this value exists words will be stretched according to their duration
-label_feature_key = ''
+label_feature_key = 'pos'
+draw_label_feature = False
 
 draw_feature_line = True
-point_feature_keys = []
-point_feature_keys = ['range.f0']
-line_feature_keys = ['mean.f0']
-#line_feature_keys = ['mean.i0']
-curve_feature_keys = []
-percentage_feature_keys = []
+point_feature_keys = ['i0_mean']
+line_feature_keys = ['f0_mean']
+curve_feature_keys = ['f0_contour', 'i0_contour']
+curve_axis_keys = ['f0_contour_xaxis', 'i0_contour_xaxis']
+evened_curve_feature_keys = []
+percentage_feature_keys = [] 
+
+minFeatureVal = -10
+maxFeatureVal = 10
+
+color_dict = {'f0_mean': [75, 150, 225, 255], 'i0_mean': [150, 100, 175, 255]}

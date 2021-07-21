@@ -1,0 +1,6 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+no|Matt|heroes_s3_2_eng_aligned.segment2.word1|0.0|0.7|0.7|1.63|0.0|NA||!|469.0|74.0|11.2117|2.4186
+is|Matt|heroes_s3_2_eng_aligned.segment2.word2|0.7|0.92|0.22|0.0|0.0|NA|||636.0|63.0|16.4849|-0.3675
+there|Matt|heroes_s3_2_eng_aligned.segment2.word3|0.92|1.04|0.12|0.0|0.0|NA|||446.0|67.0|10.3411|0.6982
+anybody|Matt|heroes_s3_2_eng_aligned.segment2.word4|1.04|1.33|0.29|0.0|0.0|NA|||471.0|70.0|11.2853|1.4565
+here|Matt|heroes_s3_2_eng_aligned.segment2.word5|1.33|1.98|0.65|0.0|0.69|NA||?|434.0|75.0|9.869|2.651

@@ -1,0 +1,4 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+i'm|Jesse|heroes_s3_2_eng_aligned.segment5.word1|0.0|0.16|0.16|0.11|0.0|NA|||0.0|70.0|0.0|0.2331
+peter|Jesse|heroes_s3_2_eng_aligned.segment5.word2|0.16|0.48|0.32|0.0|0.0|NA|||453.0|74.0|10.1614|1.1951
+petrelli|Jesse|heroes_s3_2_eng_aligned.segment5.word3|0.48|1.67|1.19|0.0|0.41|NA||!|283.0|73.0|2.0169|0.9596

@@ -1,0 +1,4 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+what's|Claire|heroes_s3_2_eng_aligned.segment7.word1|0.0|0.22|0.22|0.17|0.0|NA|||205.0|60.0|-4.5371|-0.9396
+his|Claire|heroes_s3_2_eng_aligned.segment7.word2|0.22|0.38|0.16|0.0|0.0|NA|||292.0|62.0|1.587|-0.3719
+name|Claire|heroes_s3_2_eng_aligned.segment7.word3|0.38|0.67|0.29|0.0|0.04|NA||?|300.0|73.0|2.0549|2.4556

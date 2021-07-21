@@ -1,0 +1,8 @@
+word|speaker_id|id|start_time|end_time|duration|pause_before|pause_after|pos|punctuation_before|punctuation_after|f0_mean_hz|i0_mean_db|f0_mean|i0_mean
+linderman|Nathan|heroes_s3_2_eng_aligned.segment6.word1|0.0|0.8|0.8|0.41|0.03|NA||.|268.0|68.0|9.8578|2.0047
+you're|Nathan|heroes_s3_2_eng_aligned.segment6.word2|0.83|0.96|0.13|0.03|0.0|NA|||459.0|69.0|19.1729|2.2575
+the|Nathan|heroes_s3_2_eng_aligned.segment6.word3|0.96|1.1|0.14|0.0|0.0|NA|||417.0|74.0|17.5116|3.4686
+one|Nathan|heroes_s3_2_eng_aligned.segment6.word4|1.1|1.26|0.16|0.0|0.0|NA|||54.0|73.0|-17.8766|3.2331
+who|Nathan|heroes_s3_2_eng_aligned.segment6.word5|1.26|1.37|0.11|0.0|0.0|NA|||99.0|73.0|-7.383|3.2331
+healed|Nathan|heroes_s3_2_eng_aligned.segment6.word6|1.37|1.72|0.35|0.0|0.0|NA|||74.0|69.0|-12.4218|2.2575
+me|Nathan|heroes_s3_2_eng_aligned.segment6.word7|1.72|1.91|0.19|0.0|0.21|NA||.|0.0|61.0|0.0|0.124
