@@ -57,17 +57,16 @@ To create your own proscript files, please refer to [Proscript python library](h
 
 If you use this software, please give attribution. If you want to cite it in your work, you can use the following bibliography entries.
 
-	@article{lre:prosograph,
-		author = {Alp Oktem and Mireia Farrus and Antonio Bonafonte},
-		title = {Corpora Compilation for Prosody-informed Speech Processing},
-		journal = {Language Resources & Evaluation},
-		status= {accepted}
-	}
+```
+Öktem, A., Farrús, M. & Bonafonte, A. 
+Corpora compilation for prosody-informed speech processing.
+Lang Resources & Evaluation 55, 925–946 (2021). 
+https://doi.org/10.1007/s10579-021-09556-2
+```
 
-	@inproceedings{interspeech2017:prosograph,
-		author = {Alp Oktem and Mireia Farrus and Leo Wanner},
-		title = {Prosograph: a tool for prosody visualisation of large speech corpora},
-		booktitle = {Proceedings of the 18th Annual Conference of the International Speech Communication Association (INTERSPEECH)},
-		year = {2017},
-		address = {Stockholm, Sweden}
-	}
+```
+Öktem A, Farrús M, Wanner L.
+Prosograph: A tool for prosody visualisation of large speech corpora
+In: Interspeech 2017; 2017 Aug. 20-24. Stockholm, Sweden.
+ISCA; 2017. p. 809-10.
+```
